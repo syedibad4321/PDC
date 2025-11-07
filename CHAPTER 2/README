@@ -1,0 +1,138 @@
+Chapter 2 – Threading & Synchronization Concepts with Factorial Examples
+Overview
+
+Chapter 2 focuses on thread synchronization techniques in Python and demonstrates how basic factorial calculations can be integrated with various threading paradigms. Threading allows concurrent execution of tasks, which can significantly improve performance when applied correctly. This chapter covers:
+
+Barrier synchronization
+
+Producer-Consumer problem
+
+Thread Locks (Lock, RLock)
+
+Semaphores
+
+Queue-based thread communication
+
+Each concept is illustrated using the basic factorial calculation as a shared task across threads.
+
+1. Barrier Synchronization
+
+Concept:
+A Barrier allows a set of threads to wait until all threads have reached a common synchronization point.
+
+Logic Applied:
+
+Each thread calculates the factorial of a number.
+
+Threads simulate a "race" using sleep to represent processing time.
+
+Barrier.wait() ensures all threads reach the synchronization point before continuing.
+
+Shared results are collected in a list.
+
+Use Case:
+
+Useful in simulations where multiple tasks must complete a stage before moving on.
+
+2. Producer-Consumer Problem
+
+Concept:
+
+Multiple threads coordinate using a shared buffer.
+
+Producer threads add items to the buffer.
+
+Consumer threads remove items and process them.
+
+Condition variables (threading.Condition) handle waiting and notifying threads when buffer state changes.
+
+Logic Applied:
+
+Producer produces numbers for factorial calculation.
+
+Consumer calculates factorial of produced numbers.
+
+Condition.wait() suspends a thread when buffer is empty/full.
+
+Condition.notify() wakes waiting threads.
+
+Ensures safe and synchronized access to shared resources.
+
+Use Case:
+
+Real-world applications like printing jobs, data pipelines, or task queues.
+
+3. Thread Locks (Lock & RLock)
+
+Concept:
+
+Lock ensures only one thread accesses a resource at a time.
+
+RLock (Recursive Lock) allows a thread to acquire the same lock multiple times safely.
+
+Logic Applied:
+
+Each thread calculates factorial of assigned number.
+
+Lock ensures that printing and appending results to a shared list is thread-safe.
+
+RLock allows nested access (factorial function can recursively acquire the same lock).
+
+Use Case:
+
+Protecting shared data structures and critical sections from race conditions.
+
+4. Semaphores
+
+Concept:
+
+A Semaphore controls access to a resource with a limited number of permits.
+
+Threads acquire a permit to access the resource and release it afterward.
+
+Logic Applied:
+
+Producer produces a number for factorial calculation.
+
+Consumer waits on the semaphore until a number is available.
+
+Semaphore ensures that consumers only calculate factorial when a number is produced.
+
+Provides controlled synchronization between threads.
+
+Use Case:
+
+Managing limited resources like database connections, printers, or thread pools.
+
+5. Thread Synchronization with Queue
+
+Concept:
+
+Python queue.Queue is thread-safe and handles producer-consumer coordination automatically.
+
+Threads can safely enqueue and dequeue items without explicit locks.
+
+Logic Applied:
+
+Producer thread puts numbers into the queue for factorial calculation.
+
+Consumer threads dequeue numbers and calculate factorial concurrently.
+
+Random sleep simulates processing delay.
+
+Results are collected in a shared list for final reporting.
+
+Use Case:
+
+Safe and scalable producer-consumer pipelines.
+
+Ideal for tasks where multiple consumers process work from a shared task queue.
+
+6. Summary of Threading Techniques
+Technique	Synchronization Method	Factorial Example Usage
+Barrier	threading.Barrier	Wait for all threads to complete factorial before printing
+Producer-Consumer	threading.Condition	Producer produces numbers, consumer calculates factorial
+Lock	threading.Lock	Thread-safe printing and result collection
+RLock	threading.RLock	Recursive locking for factorial calculation
+Semaphore	threading.Semaphore	Consumer waits for producer to produce a number
+Queue	queue.Queue	Producer adds numbers, multiple consumers calculate factorial

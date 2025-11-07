@@ -1,0 +1,123 @@
+Chapter 3 – Process Based Parallelism
+Overview
+
+Chapter 3 focuses on process-based parallelism using Python's multiprocessing module.
+Processes allow true parallel execution on multiple CPU cores, unlike threads that are limited by the Global Interpreter Lock (GIL).
+This chapter demonstrates factorial calculation examples using Pipes, Queues, Daemon processes, Terminate, and spawned processes.
+
+1. Multiprocessing with Pipe
+
+Concept:
+
+Pipes allow inter-process communication (IPC).
+
+One process can send numbers through a pipe, another process receives them and calculates factorial.
+
+Logic:
+
+Producer Process: generates numbers for factorial.
+
+Worker Process: reads numbers from pipe and calculates factorial.
+
+Main Process: receives results from worker and prints.
+
+Example Use:
+
+Producer sends numbers [5, 6, 7, 8]
+
+Worker calculates factorial of each number
+
+Main process prints results
+
+2. Multiprocessing with Queue
+
+Concept:
+
+multiprocessing.Queue allows safe communication between processes.
+
+One process can enqueue numbers, and another process can consume numbers to calculate factorial.
+
+Logic:
+
+Producer generates random numbers for factorial and enqueues them.
+
+Consumer dequeues numbers and calculates factorial.
+
+Results are stored in a shared Manager list.
+
+Advantages:
+
+Queue handles synchronization automatically
+
+Allows multiple producers and consumers
+
+3. Terminate a Process
+
+Concept:
+
+A process can be terminated before it finishes.
+
+Useful for stopping long-running computations.
+
+Logic:
+
+Start a factorial process for a number.
+
+Let it run for a few steps.
+
+Call terminate() to stop it.
+
+exitcode indicates termination status.
+
+Note:
+
+Terminating abruptly may leave incomplete computation.
+
+4. Daemon vs Non-Daemon Processes
+
+Concept:
+
+Daemon process: runs in background, terminated automatically when main process exits.
+
+Non-daemon process: ensures main process waits until it finishes.
+
+Logic for Factorial:
+
+Daemon process calculates factorials of smaller numbers (e.g., 3–5).
+
+Non-daemon process calculates factorials of larger numbers (e.g., 6–8).
+
+Demonstrates process independence.
+
+Important:
+
+Daemon processes may not complete all work if main exits.
+
+5. Spawn Processes
+
+Concept:
+
+Every process is spawned independently.
+
+Can calculate factorial for a single number in each process.
+
+Logic:
+
+For numbers [3, 4, 5, 6, 7], spawn separate processes.
+
+Each process calculates factorial and prints result.
+
+join() ensures main process waits for each to complete.
+
+Note:
+
+True parallelism can be achieved without sequential join()s.
+
+Summary of Best Practices
+Feature	Use Case
+Pipe	One-to-one communication
+Queue	Multiple producers/consumers
+Terminate	Stop long-running process early
+Daemon Process	Background tasks that should not block exit
+Non-Daemon Process	Critical tasks that must complete
+Spawn	Run independent tasks in parallel

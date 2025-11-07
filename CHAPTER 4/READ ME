@@ -1,0 +1,66 @@
+Chapter 4: MPI – Message Passing Interface
+
+Overview:
+Chapter 4 introduces mpi4py for distributed memory parallelism across multiple nodes or processes.
+
+Key Concepts:
+
+Broadcast
+
+comm.bcast(variable, root=0) shares a variable from root process to all others.
+
+Factorial can be computed by each process on the broadcasted number.
+
+Scatter / Gather
+
+scatter() distributes array elements; gather() collects results.
+
+Each process computes factorial on received element.
+
+Point-to-Point Communication
+
+send() and recv() for direct process-to-process exchange.
+
+Example: Process 1 sends number → Process 5 computes factorial.
+
+All-to-All Communication
+
+comm.Alltoall(sendbuf, recvbuf) sends each element of sendbuf from every process to all other processes.
+
+Factorial example: each process computes factorial of numbers received from all other processes.
+
+Advanced MPI Patterns
+
+Multiple send/receive pairs for independent factorial computations.
+
+Factorial of string length if non-numeric data is exchanged.
+
+Processes can work as producers and consumers in distributed environment.
+
+Factorial Computation Across Chapters
+
+Logic Summary:
+
+Threading: Each thread computes factorial of assigned number with shared resources protected by locks.
+
+Multiprocessing: Independent processes compute factorial of different numbers; Queue or Pipe can be used for communication.
+
+MPI:
+
+Broadcast: all processes receive number → compute factorial.
+
+Scatter: array divided → each process computes factorial of its element.
+
+Send/Recv: point-to-point data exchange → factorial computed on received number.
+
+All-to-All: full data exchange → each process computes factorial for all received numbers.
+
+Benefits of Parallel Factorial Computation
+
+Efficient utilization of CPU cores.
+
+Demonstrates thread/process synchronization and safe communication.
+
+Highlights differences between shared memory (threads) and distributed memory (MPI).
+
+Can be scaled for large datasets or high CPU-bound workloads.
