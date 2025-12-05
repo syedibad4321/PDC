@@ -10,19 +10,17 @@ import threading
 def do_something(size, out_list):
     """Simulate heavy work — factorial-like computation"""
     for i in range(size):
-        out_list.append(i * i)  # simple dummy computation
+        out_list.append(i * i)  
 
 
 if __name__ == "__main__":
     start_time = time.time()
-    size = 1_000_000     # workload
-    threads = 10         # number of threads
+    size = 1_000_000     
+    threads = 10         
     jobs = []
 
     for i in range(threads):
         out_list = []
-        # ❌ tumhare code me ye galti thi: target=do_something(size, out_list)
-        # ✅ correct version: target=do_something, args=(size, out_list)
         thread = threading.Thread(target=do_something, args=(size, out_list))
         jobs.append(thread)
 
