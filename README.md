@@ -1,4 +1,4 @@
-"# PDC" 
+# PDC
 
 ---
 
@@ -42,6 +42,22 @@
   - **Broadcast**
   - **Send & Receive**
 - Factorial calculations and data sharing across processes using MPI.
+
+---
+
+### Chapter 5 – Asyncio & Concurrent Tasks
+- **Asyncio Coroutine examples**:
+  - Using `async def` and `await` for asynchronous computations.
+  - Tasks include **factorial**, **fibonacci**, and **binomial coefficient** calculations running in parallel.
+  - Demonstrates **async task scheduling**, `asyncio.create_task`, and **awaitable coroutines**.
+- **Asyncio Event Loop examples**:
+  - Using multiple coroutines and futures.
+  - Demonstrates **non-blocking execution** of multiple tasks.
+- **Concurrent Futures examples**:
+  - Using `ThreadPoolExecutor` and `ProcessPoolExecutor`.
+  - Executes CPU-bound tasks in **parallel threads or processes**.
+  - Tracks **execution duration per task**.
+- Full Chapter 5 demonstrates how **asynchronous programming** and **parallel task execution** can improve performance in Python.
 
 ---
 
