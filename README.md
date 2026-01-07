@@ -1,4 +1,4 @@
-# PDC - Parallel & Distributed Computing
+"# PDC" 
 
 This repository contains Python implementations of core Parallel and Distributed Computing concepts. It covers multithreading, multiprocessing, thread synchronization, MPI, AsyncIO, and Distributed Task Queues (Celery).
 
@@ -33,37 +33,17 @@ Explores parallelism using separate memory spaces (Processes) instead of threads
 - **Parallel Computation:** Factorial and other math computations using multiple processes.
 
 ### Chapter 4 – MPI (Message Passing Interface)
-Distributed computing examples using the `mpi4py` library.
-- **Point-to-Point Communication:** `Send` and `Receive`.
-- **Collective Communication:**
-  - **Broadcast:** Sending data from one node to all.
-  - **Scatter & Gather:** Distributing tasks and collecting results.
-  - **All-to-All:** Complex data exchange patterns.
-- **MPI Applications:** Factorial calculations and data sharing across distributed processes.
-
-### Chapter 5 – AsyncIO & Concurrency
-Asynchronous programming and concurrent execution using Python's modern libraries.
-- **AsyncIO:**
-  - Understanding **Event Loops** and **Coroutines**.
-  - Managing **Tasks** and **Futures**.
-  - Asynchronous execution flow.
-- **Concurrent Futures:**
-  - Using **Pooling** mechanisms for efficient execution.
-
-### Chapter 6 – Celery & Socket Programming
-Distributed task queues and network programming concepts.
-- **Celery (Distributed Tasks):**
-  - Setting up Celery workers.
-  - Running background tasks.
-- **Socket Programming:**
-  - **Simple Server:** Basic socket connection setup.
-  - **Chain Topology:** Implementing a multi-node network (Client → Middle Node → Final Server).
+- Examples using `mpi4py` library:
+  - **All-to-All communication**
+  - **Scatter & Gather**
+  - **Broadcast**
+  - **Send & Receive**
+- Factorial calculations and data sharing across processes using MPI.
 
 ---
 
-## 🛠️ Prerequisites
-
-To run the examples in this repository, you need Python installed along with the required libraries.
+## How to Run
+1. Clone the repository:
 
 ```bash
 pip install mpi4py celery
