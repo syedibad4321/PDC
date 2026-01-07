@@ -1,53 +1,69 @@
-"# PDC" 
+# PDC - Parallel & Distributed Computing
 
----
+This repository contains Python implementations of core Parallel and Distributed Computing concepts. It covers multithreading, multiprocessing, thread synchronization, MPI, AsyncIO, and Distributed Task Queues (Celery).
 
-## Chapter Details
+## 📂 Repository Structure
 
 ### Chapter 1 – Threading & Multiprocessing
-- **Multithreading and multiprocessing** examples in Python.
-- **Factorial calculation** using:
-  - Threading
-  - RLock
-  - Condition
-  - Semaphore
-- **Producer-Consumer** examples implemented in threads.
-- Demonstrates thread safety using `Lock` and `RLock`.
-
----
+Focuses on the basics of creating threads and processes, along with safety mechanisms.
+- **Multithreading & Multiprocessing:** Basic implementation examples.
+- **Factorial Calculation:** Implemented using various synchronization primitives:
+  - `Threading`
+  - `RLock` (Reentrant Lock)
+  - `Condition` Variables
+  - `Semaphore`
+- **Producer-Consumer Problem:** Solved using threads.
+- **Thread Safety:** Demonstrations using `Lock` and `RLock`.
 
 ### Chapter 2 – Thread Synchronization
-- Examples using:
-  - **Barrier** for thread coordination.
-  - **Queue** for thread-safe data sharing.
-  - **Semaphore** for controlling access to shared resources.
-- Demonstrates **thread-safe factorial calculations** using these synchronization primitives.
-
----
+Advanced synchronization techniques to manage concurrent operations.
+- **Barrier:** Coordinating multiple threads to wait for each other.
+- **Queue:** Implementing thread-safe data sharing.
+- **Semaphore:** Controlling access to a limited number of resources.
+- **Thread-Safe Factorial:** performing calculations safely across multiple threads.
 
 ### Chapter 3 – Process-Based Parallelism
-- **Multiprocessing** examples:
-  - Pipes for communication between processes.
-  - Queue-based producer-consumer.
-  - Daemon vs non-daemon processes.
-  - Spawn processes with custom functions.
-- Factorial and other computations parallelized using **processes**.
-
----
+Explores parallelism using separate memory spaces (Processes) instead of threads.
+- **Inter-Process Communication (IPC):**
+  - **Pipes:** For two-way communication between processes.
+  - **Queues:** For producer-consumer models in multiprocessing.
+- **Process Management:**
+  - Daemon vs. Non-Daemon processes.
+  - Spawning processes with custom functions.
+- **Parallel Computation:** Factorial and other math computations using multiple processes.
 
 ### Chapter 4 – MPI (Message Passing Interface)
-- Examples using `mpi4py` library:
-  - **All-to-All communication**
-  - **Scatter & Gather**
-  - **Broadcast**
-  - **Send & Receive**
-- Factorial calculations and data sharing across processes using MPI.
+Distributed computing examples using the `mpi4py` library.
+- **Point-to-Point Communication:** `Send` and `Receive`.
+- **Collective Communication:**
+  - **Broadcast:** Sending data from one node to all.
+  - **Scatter & Gather:** Distributing tasks and collecting results.
+  - **All-to-All:** Complex data exchange patterns.
+- **MPI Applications:** Factorial calculations and data sharing across distributed processes.
+
+### Chapter 5 – AsyncIO & Concurrency
+Asynchronous programming and concurrent execution using Python's modern libraries.
+- **AsyncIO:**
+  - Understanding **Event Loops** and **Coroutines**.
+  - Managing **Tasks** and **Futures**.
+  - Asynchronous execution flow.
+- **Concurrent Futures:**
+  - Using **Pooling** mechanisms for efficient execution.
+
+### Chapter 6 – Celery & Socket Programming
+Distributed task queues and network programming concepts.
+- **Celery (Distributed Tasks):**
+  - Setting up Celery workers.
+  - Running background tasks.
+- **Socket Programming:**
+  - **Simple Server:** Basic socket connection setup.
+  - **Chain Topology:** Implementing a multi-node network (Client → Middle Node → Final Server).
 
 ---
 
-## How to Run
-1. Clone the repository:
+## 🛠️ Prerequisites
+
+To run the examples in this repository, you need Python installed along with the required libraries.
 
 ```bash
-git clone https://github.com/syedibad4321/PDC.git
-cd PDC
+pip install mpi4py celery
